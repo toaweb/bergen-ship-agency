@@ -21,3 +21,42 @@ document.querySelectorAll('.has-dropdown > a').forEach(link => {
     }
   });
 });
+
+// Contact form: progressive enhancement — submit via fetch, show inline status
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  const status = document.getElementById('form-status');
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    status.className = 'form-status';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' },
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        status.textContent = 'Thanks — we\'ll be in touch shortly.';
+        status.className = 'form-status form-status-success';
+        contactForm.reset();
+      } else {
+        status.textContent = data.error || 'Something went wrong. Please try again.';
+        status.className = 'form-status form-status-error';
+      }
+    } catch {
+      status.textContent = 'Network error. Please try again or call us.';
+      status.className = 'form-status form-status-error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
+  });
+}
