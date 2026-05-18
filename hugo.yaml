@@ -1,7 +1,9 @@
 baseURL: "https://bergenshipagency.no/"
-languageCode: "en-us"
 title: "Bergen Ship Agency"
 enableRobotsTXT: true
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false  # English at /, Norwegian at /nb/
 
 # Disable taxonomies — not used on this marketing site, keeps /categories/ and /tags/ out of sitemap
 disableKinds:
@@ -13,11 +15,11 @@ markup:
     renderer:
       unsafe: true
 
+# Shared params (apply to all languages unless overridden in a language block)
 params:
   phone: "+47 908 93 779"
   email: "post@bergenshipagency.no"
   address: "Skoltegrunnskaien 1, 5003 Bergen"
-  description: "Bergen Ship Agency provides all your port agency needs along the Norwegian coast."
   og_image: "about-us.jpg"
 
   business:
@@ -29,3 +31,21 @@ params:
     areaServed: "Norway"
     latitude: 60.40142
     longitude: 5.31135
+
+languages:
+  en:
+    languageCode: en-us
+    languageName: English
+    weight: 1
+    title: "Bergen Ship Agency"
+    params:
+      description: "Bergen Ship Agency provides all your port agency needs along the Norwegian coast."
+      og_locale: "en_US"
+  nb:
+    languageCode: nb-no
+    languageName: Norsk
+    weight: 2
+    title: "Bergen Ship Agency"
+    params:
+      description: "Bergen Ship Agency leverer havneagenttjenester langs Norskekysten."
+      og_locale: "nb_NO"

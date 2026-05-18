@@ -1,0 +1,59 @@
+# UI strings only — page bodies and marketing copy live in content/*.md and
+# do NOT belong here. Keys are flat snake_case.
+
+# Navigation
+nav_home: Home
+nav_about: About Us
+nav_services: Services
+nav_contact: Contact Us
+
+# Buttons / calls to action
+btn_get_in_touch: Get in Touch
+btn_learn_more: Learn More
+btn_contact_us: Contact Us
+btn_about_us: About Us
+btn_send_message: Send Message
+btn_sending: Sending…
+card_link_more: "Learn more →"
+
+# Sidebar / widgets
+widget_our_services: Our Services
+widget_need_assistance: Need Assistance?
+widget_need_assistance_body: Our team is available 24/7 for all your port agency needs.
+
+# Footer
+footer_navigation: Navigation
+footer_contact: Contact
+footer_brand_tagline: Your trusted partner for all port agency needs along the Norwegian coast. Available 24/7.
+footer_copyright_suffix: All rights reserved.
+
+# Page hero tags
+tag_what_we_do: What We Do
+tag_our_services: Our Services
+tag_get_in_touch: Get In Touch
+
+# Contact form
+form_heading: Send us a message
+form_intro: We typically respond within a few hours. For urgent matters, please call.
+form_name: Name
+form_email: Email
+form_company: Company
+form_phone: Phone
+form_message: Message
+form_status_success: "Thanks — we'll be in touch shortly."
+form_status_error: Something went wrong. Please try again.
+form_status_network: Network error. Please try again or call us.
+
+# Contact page
+contact_heading: Port Agent
+contact_intro: We are available 24/7 to assist with all your port agency needs along the Norwegian coast.
+contact_phone: Phone
+contact_email: E-mail
+contact_visit: Visit Us
+contact_departments: Departments
+
+# Accessibility
+skip_to_content: Skip to content
+
+# Language switcher
+language_switcher_label: Language

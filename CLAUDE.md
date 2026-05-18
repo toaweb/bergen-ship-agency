@@ -82,9 +82,29 @@ weight: 1                 # sort order across nav, dropdown, footer, sidebar, ca
 - The `asset-image` shortcode is the only way to surface `assets/images/` content from inside a markdown body — direct `<img src="/images/...">` skips the pipeline and breaks if filenames change.
 - Source images are currently 600×537 (services) / 960×540 (about-us). Templates do **not** upscale; if you want sharper detail on hi-DPI displays, replace the source with a larger image — templates will pick it up automatically.
 
-### Multilingual scaffolding
+### Multilingual
 
-`i18n/` and `data/` directories exist but are empty. `hugo.yaml` sets `languageCode: "en-us"` and content is English-only. No translation flow is wired up.
+Two languages configured in `hugo.yaml`: `en` (default, served at `/`) and `nb` (Norwegian Bokmål, served at `/nb/`). `defaultContentLanguageInSubdir: false` keeps English at the root.
+
+- **UI strings** → `i18n/en.yaml` and `i18n/nb.yaml`. Flat snake_case keys (`nav_home`, `form_email`, etc.). Templates reference via `{{ i18n "key" }}`. Page bodies and marketing copy do NOT belong here — those live in `content/*.md`.
+- **Content translations** → `*.nb.md` siblings of `*.md` files. Hugo auto-links them as translations of the same logical page. A missing translation falls back to a 404 — there's no automatic English fallback for missing pages.
+- **Current state** — Norwegian stubs exist for top-level pages (home, about-us, contact, services index) with placeholder bodies marked `<!-- TODO -->`. Service detail pages (`yacht.nb.md` etc.) are not yet created; `/nb/services/<slug>/` will 404 and the Norwegian services list/dropdown will be empty until you create them.
+- **Language switcher** lives in `partials/header.html` topbar, ranges over `.AllTranslations`. Marks current with `class="active"` + `aria-current="true"`.
+- **Per-language params** — each language block sets its own `description` (for `<meta description>` and OG description) and `og_locale` (`en_US` / `nb_NO`, Facebook-format territory codes). Other params (`phone`, `email`, `address`, `business.*`) are shared at the top level.
+- **Internal links** must go through `relLangURL` (e.g. `{{ "/about-us/" | relLangURL }}`) so they prefix `/nb/` correctly when rendered in Norwegian context.
+- **Form JS strings** are passed from Hugo to JS via `data-msg-*` attributes on `#contact-form` so the JS reads the localized text rather than hardcoding English.
+
+### Adding a new UI string
+
+1. Add the key + English text to `i18n/en.yaml`.
+2. Add the same key + Norwegian to `i18n/nb.yaml` (mandatory — Hugo logs a warning at build if a key is missing in a language).
+3. Reference as `{{ i18n "key" }}` in templates.
+
+### Translating a content page
+
+1. Copy `content/foo.md` → `content/foo.nb.md`.
+2. Translate the `title`, `description`, and body.
+3. Leave `image`, `icon`, `weight` as-is (those are language-independent).
 
 ## Adding a new service
 

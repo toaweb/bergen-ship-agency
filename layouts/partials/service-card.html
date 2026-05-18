@@ -20,6 +20,6 @@
     {{- end }}
     <h3>{{ .Title }}</h3>
     <p>{{ .Params.summary | default .Description }}</p>
-    <span class="card-link">Learn more →</span>
+    <span class="card-link">{{ i18n "card_link_more" }}</span>
   </div>
 </a>

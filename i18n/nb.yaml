@@ -1,0 +1,58 @@
+# Norwegian Bokmål translations. Keep keys in sync with en.yaml.
+
+# Navigasjon
+nav_home: Hjem
+nav_about: Om oss
+nav_services: Tjenester
+nav_contact: Kontakt oss
+
+# Knapper
+btn_get_in_touch: Ta kontakt
+btn_learn_more: Les mer
+btn_contact_us: Kontakt oss
+btn_about_us: Om oss
+btn_send_message: Send melding
+btn_sending: Sender…
+card_link_more: "Les mer →"
+
+# Sidefelt / widgets
+widget_our_services: Våre tjenester
+widget_need_assistance: Trenger du hjelp?
+widget_need_assistance_body: Teamet vårt er tilgjengelig 24/7 for alle dine havneagentbehov.
+
+# Bunntekst
+footer_navigation: Navigasjon
+footer_contact: Kontakt
+footer_brand_tagline: Din betrodde partner for alle havneagentbehov langs Norskekysten. Tilgjengelig 24/7.
+footer_copyright_suffix: Alle rettigheter forbeholdt.
+
+# Sideoverskrifter
+tag_what_we_do: Hva vi gjør
+tag_our_services: Våre tjenester
+tag_get_in_touch: Ta kontakt
+
+# Kontaktskjema
+form_heading: Send oss en melding
+form_intro: Vi svarer vanligvis innen få timer. For hastesaker, ring oss.
+form_name: Navn
+form_email: E-post
+form_company: Selskap
+form_phone: Telefon
+form_message: Melding
+form_status_success: "Takk – vi tar kontakt snart."
+form_status_error: Noe gikk galt. Vennligst prøv igjen.
+form_status_network: Nettverksfeil. Vennligst prøv igjen eller ring oss.
+
+# Kontaktside
+contact_heading: Havneagent
+contact_intro: Vi er tilgjengelige 24/7 for alle dine havneagentbehov langs Norskekysten.
+contact_phone: Telefon
+contact_email: E-post
+contact_visit: Besøk oss
+contact_departments: Avdelinger
+
+# Tilgjengelighet
+skip_to_content: Hopp til innhold
+
+# Språkvelger
+language_switcher_label: Språk

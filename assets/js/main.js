@@ -22,19 +22,26 @@ document.querySelectorAll('.has-dropdown > a').forEach(link => {
   });
 });
 
-// Contact form: progressive enhancement — submit via fetch, show inline status
+// Contact form: progressive enhancement — submit via fetch, show inline status.
+// User-facing strings come from data-* attributes set by Hugo's i18n function.
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
   const status = document.getElementById('form-status');
   const submitBtn = contactForm.querySelector('button[type="submit"]');
   const originalBtnText = submitBtn.textContent;
+  const msgs = {
+    success: contactForm.dataset.msgSuccess,
+    error: contactForm.dataset.msgError,
+    network: contactForm.dataset.msgNetwork,
+    sending: contactForm.dataset.btnSending,
+  };
 
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     status.textContent = '';
     status.className = 'form-status';
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
+    submitBtn.textContent = msgs.sending;
 
     try {
       const res = await fetch(contactForm.action, {
@@ -44,15 +51,15 @@ if (contactForm) {
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.ok) {
-        status.textContent = 'Thanks — we\'ll be in touch shortly.';
+        status.textContent = msgs.success;
         status.className = 'form-status form-status-success';
         contactForm.reset();
       } else {
-        status.textContent = data.error || 'Something went wrong. Please try again.';
+        status.textContent = data.error || msgs.error;
         status.className = 'form-status form-status-error';
       }
     } catch {
-      status.textContent = 'Network error. Please try again or call us.';
+      status.textContent = msgs.network;
       status.className = 'form-status form-status-error';
     } finally {
       submitBtn.disabled = false;

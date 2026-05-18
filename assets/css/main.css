@@ -61,6 +61,33 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===========================
+   LANGUAGE SWITCHER
+   =========================== */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  font-size: 0.85rem;
+}
+.lang-switcher a {
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--transition), background var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.lang-switcher a:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+.lang-switcher a.active {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ===========================
    CONTACT FORM
    =========================== */
 .contact-form-wrap h2 {

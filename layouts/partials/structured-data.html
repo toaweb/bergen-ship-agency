@@ -6,7 +6,7 @@
 {{- $b := .Site.Params.business -}}
 {{- $logo := "" -}}
 {{- with resources.Get (printf "images/%s" .Site.Params.og_image) -}}
-  {{- $logo = .Permalink -}}
+  {{- $logo = (.Fill "1200x630 webp q85").Permalink -}}
 {{- end -}}
 
 {{- $localBusiness := dict

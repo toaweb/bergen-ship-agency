@@ -2,7 +2,7 @@
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-content">
-      <div class="section-tag">{{ .Section | humanize | default "What We Do" }}</div>
+      <div class="section-tag">{{ i18n "tag_what_we_do" }}</div>
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ if eq .Section "services" }}<p>Comprehensive port agency services for all vessel types along the Norwegian coast</p>{{ end }}{{ end }}
     </div>

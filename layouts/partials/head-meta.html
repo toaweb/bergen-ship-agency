@@ -22,7 +22,12 @@
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:type" content="{{ $ogType }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="{{ .Site.Params.og_locale }}">
+{{- range .AllTranslations -}}
+{{- if ne .Language.Lang $.Page.Language.Lang }}
+<meta property="og:locale:alternate" content="{{ .Site.Params.og_locale }}">
+{{- end -}}
+{{- end }}
 {{- with $ogImage }}
 <meta property="og:image" content="{{ . }}">
 <meta property="og:image:width" content="1200">

@@ -2,8 +2,8 @@
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-content">
-      <div class="section-tag">Get In Touch</div>
-      <h1>Contact Us</h1>
+      <div class="section-tag">{{ i18n "tag_get_in_touch" }}</div>
+      <h1>{{ .Title }}</h1>
     </div>
   </div>
 </section>
@@ -12,8 +12,8 @@
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
-        <h2>Port Agent</h2>
-        <p>We are available 24/7 to assist with all your port agency needs along the Norwegian coast.</p>
+        <h2>{{ i18n "contact_heading" }}</h2>
+        <p>{{ i18n "contact_intro" }}</p>
 
         <div class="contact-cards">
           <div class="contact-card">
@@ -21,7 +21,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
             </div>
             <div>
-              <strong>Phone</strong>
+              <strong>{{ i18n "contact_phone" }}</strong>
               <a href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a>
             </div>
           </div>
@@ -30,7 +30,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
             </div>
             <div>
-              <strong>E-mail</strong>
+              <strong>{{ i18n "contact_email" }}</strong>
               <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
             </div>
           </div>
@@ -39,14 +39,14 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
             </div>
             <div>
-              <strong>Visit Us</strong>
-              <span>Skoltegrunnskaien 1, 5003 Bergen</span>
+              <strong>{{ i18n "contact_visit" }}</strong>
+              <span>{{ .Site.Params.address }}</span>
             </div>
           </div>
         </div>
 
         <div class="departments">
-          <h3>Departments</h3>
+          <h3>{{ i18n "contact_departments" }}</h3>
           <div class="dept-card">
             <strong>Stavanger</strong>
             <a href="mailto:stv@bergenshipagency.no">stv@bergenshipagency.no</a>
@@ -55,32 +55,36 @@
       </div>
 
       <div class="contact-form-wrap">
-        <h2>Send us a message</h2>
-        <p>We typically respond within a few hours. For urgent matters, please call.</p>
+        <h2>{{ i18n "form_heading" }}</h2>
+        <p>{{ i18n "form_intro" }}</p>
 
-        <form id="contact-form" class="contact-form" action="/api/contact" method="POST" novalidate>
+        <form id="contact-form" class="contact-form" action="/api/contact" method="POST" novalidate
+              data-msg-success="{{ i18n "form_status_success" }}"
+              data-msg-error="{{ i18n "form_status_error" }}"
+              data-msg-network="{{ i18n "form_status_network" }}"
+              data-btn-sending="{{ i18n "btn_sending" }}">
           <div class="form-row">
             <label>
-              <span>Name <em>*</em></span>
+              <span>{{ i18n "form_name" }} <em>*</em></span>
               <input type="text" name="name" required maxlength="200" autocomplete="name">
             </label>
             <label>
-              <span>Email <em>*</em></span>
+              <span>{{ i18n "form_email" }} <em>*</em></span>
               <input type="email" name="email" required autocomplete="email">
             </label>
           </div>
           <div class="form-row">
             <label>
-              <span>Company</span>
+              <span>{{ i18n "form_company" }}</span>
               <input type="text" name="company" maxlength="200" autocomplete="organization">
             </label>
             <label>
-              <span>Phone</span>
+              <span>{{ i18n "form_phone" }}</span>
               <input type="tel" name="phone" maxlength="50" autocomplete="tel">
             </label>
           </div>
           <label>
-            <span>Message <em>*</em></span>
+            <span>{{ i18n "form_message" }} <em>*</em></span>
             <textarea name="message" required rows="6" maxlength="5000"></textarea>
           </label>
 
@@ -90,7 +94,7 @@
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
 
-          <button type="submit" class="btn btn-primary">Send Message</button>
+          <button type="submit" class="btn btn-primary">{{ i18n "btn_send_message" }}</button>
           <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>

@@ -9,12 +9,19 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
         {{ .Site.Params.email }}
       </a>
+      {{- if hugo.IsMultilingual }}
+      <nav class="lang-switcher" aria-label="{{ i18n "language_switcher_label" }}">
+        {{- range .AllTranslations }}
+        <a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}"{{ if eq .Language.Lang $.Page.Language.Lang }} class="active" aria-current="true"{{ end }}>{{ .Language.LanguageName }}</a>
+        {{- end }}
+      </nav>
+      {{- end }}
     </div>
   </div>
 
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo">
+      <a href="{{ "/" | relLangURL }}" class="nav-logo">
         <span class="logo-text">Bergen Ship Agency</span>
       </a>
 
@@ -23,20 +30,22 @@
       </button>
 
       <ul class="nav-menu" id="navMenu">
-        <li><a href="/" class="{{ if .IsHome }}active{{ end }}">Home</a></li>
-        <li><a href="/about-us/" class="{{ if eq .RelPermalink "/about-us/" }}active{{ end }}">About Us</a></li>
+        <li><a href="{{ "/" | relLangURL }}" class="{{ if .IsHome }}active{{ end }}">{{ i18n "nav_home" }}</a></li>
+        <li><a href="{{ "/about-us/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/about-us/" }}active{{ end }}">{{ i18n "nav_about" }}</a></li>
         <li class="has-dropdown">
-          <a href="/services/" class="{{ if hasPrefix .RelPermalink "/services/" }}active{{ end }}">
-            Services
+          <a href="{{ "/services/" | relLangURL }}" class="{{ if in .RelPermalink "/services/" }}active{{ end }}">
+            {{ i18n "nav_services" }}
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
           </a>
           <ul class="dropdown">
-            {{- range (site.GetPage "/services").Pages.ByWeight }}
+            {{- with site.GetPage "/services" }}
+              {{- range .Pages.ByWeight }}
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+              {{- end }}
             {{- end }}
           </ul>
         </li>
-        <li><a href="/contact/" class="{{ if eq .RelPermalink "/contact/" }}active{{ end }}">Contact Us</a></li>
+        <li><a href="{{ "/contact/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/contact/" }}active{{ end }}">{{ i18n "nav_contact" }}</a></li>
       </ul>
     </div>
   </nav>
