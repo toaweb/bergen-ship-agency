@@ -90,8 +90,16 @@ footer_memberships_note: Membership and certification details are illustrative â
 # Team page
 team_section_tag: People
 team_intro: Port agency is a relationship business. Here's the team behind every Bergen Ship Agency port call.
+
+# Per-person role labels (shown on each card)
 team_role_leader: Leader
 team_role_ship_agent: Ship Agent
 team_role_warehouse: Warehouse
+
+# Section headings (above each group of cards)
+team_group_leader: Leadership
+team_group_ship_agent: Ship Agents
+team_group_warehouse: Warehouse
+
 team_photo_missing: "Photo coming"
 team_edit_hint: "<em>Add photos and contact details in <code>data/team.yaml</code> &mdash; this page rebuilds automatically.</em>"

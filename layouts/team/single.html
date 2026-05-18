@@ -11,19 +11,39 @@
 
 <section class="section">
   <div class="container">
-    <div class="team-grid">
-      {{- range sort site.Data.team "weight" }}
-        {{- $person := . -}}
-        {{- /* Compute initials from name: first letter of up to two words. Handles "Tor-Ove" and "Jon Helge". */ -}}
-        {{- $cleanedName := replace .name "-" " " -}}
-        {{- $words := split $cleanedName " " -}}
-        {{- $initials := "" -}}
-        {{- range first 2 $words -}}
-          {{- $initials = printf "%s%s" $initials (substr . 0 1 | upper) -}}
-        {{- end -}}
+    {{- /*
+      Group team by role. Roles in $roleOrder are shown first in that order;
+      any other role keys present in data/team.yaml fall through after.
+    */ -}}
+    {{- $roleOrder := slice "leader" "ship_agent" "warehouse" -}}
+    {{- range $extra := site.Data.team -}}
+      {{- if not (in $roleOrder $extra.role) -}}
+        {{- $roleOrder = $roleOrder | append $extra.role -}}
+      {{- end -}}
+    {{- end -}}
 
-        <article class="team-card">
-          {{- with .photo }}
+    {{- range $role := $roleOrder -}}
+      {{- $people := where (sort site.Data.team "weight") "role" $role -}}
+      {{- if $people -}}
+        {{- $count := len $people -}}
+        {{- $gridClass := "team-grid team-grid--multi" -}}
+        {{- if eq $count 1 -}}{{ $gridClass = "team-grid team-grid--solo" }}{{- end -}}
+        {{- if eq $count 2 -}}{{ $gridClass = "team-grid team-grid--pair" }}{{- end -}}
+
+    <div class="team-group team-group--{{ $role }}">
+      <h2 class="team-group-title">{{ i18n (printf "team_group_%s" $role) | default (i18n (printf "team_role_%s" $role)) }}</h2>
+      <div class="{{ $gridClass }}">
+        {{- range $person := $people }}
+          {{- /* Initials fallback: first letter of up to 2 name parts (split on space + hyphen). */ -}}
+          {{- $cleanedName := replace $person.name "-" " " -}}
+          {{- $words := split $cleanedName " " -}}
+          {{- $initials := "" -}}
+          {{- range first 2 $words -}}
+            {{- $initials = printf "%s%s" $initials (substr . 0 1 | upper) -}}
+          {{- end }}
+
+        <article class="team-card{{ if eq $count 1 }} team-card--featured{{ end }}">
+          {{- with $person.photo }}
             {{- $img := resources.Get (printf "images/team/%s" .) -}}
             {{- with $img }}
               {{- $img = .Fill "600x600 webp q85" }}
@@ -44,17 +64,17 @@
           {{- end }}
 
           <div class="team-body">
-            <h3>{{ .name }}</h3>
-            <p class="team-role">{{ i18n (printf "team_role_%s" .role) }}</p>
+            <h3>{{ $person.name }}</h3>
+            <p class="team-role">{{ i18n (printf "team_role_%s" $person.role) }}</p>
 
             <ul class="team-contact-list">
-              {{- with .phone }}
+              {{- with $person.phone }}
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
                 <a href="tel:{{ . }}">{{ . }}</a>
               </li>
               {{- end }}
-              {{- with .email }}
+              {{- with $person.email }}
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
                 <a href="mailto:{{ . }}">{{ . }}</a>
@@ -63,8 +83,11 @@
             </ul>
           </div>
         </article>
-      {{- end }}
+        {{- end }}
+      </div>
     </div>
+      {{- end }}
+    {{- end }}
 
     <p class="team-empty-hint">{{ i18n "team_edit_hint" | safeHTML }}</p>
   </div>

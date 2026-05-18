@@ -114,12 +114,21 @@ Two languages configured in `hugo.yaml`: `en` (default, served at `/`) and `nb` 
 Single page at `/team/` (and `/nb/team/`) backed by **`data/team.yaml`** — that file is the single source of truth and the only file the client should need to touch when staff changes. The file is heavily commented; convention is:
 
 - One entry per person with `name`, `role`, optional `photo` / `email` / `phone`, and `weight` (sort order).
-- `role` is a **key** (`leader`, `ship_agent`, `warehouse`), not a label. The localized label comes from `i18n/*.yaml` under `team_role_<key>`. Adding a new role type means adding the i18n key in both languages first.
+- `role` is a **key** (`leader`, `ship_agent`, `warehouse`), not a label. Two i18n labels per role:
+  - `team_role_<key>` — shown on the individual card (e.g. "Ship Agent")
+  - `team_group_<key>` — shown as the section heading (e.g. "Ship Agents")
+  - Adding a new role type means adding *both* keys in `i18n/en.yaml` and `i18n/nb.yaml`.
+- The layout **groups people by role** and renders one section per role. Role order is hardcoded in `layouts/team/single.html` as `["leader", "ship_agent", "warehouse"]`; any unknown role keys present in the data file get appended after these in the order they appear.
+- Each group adapts its grid based on count:
+  - 1 person → `team-grid--solo` (centered single card, max 360px wide)
+  - 2 people → `team-grid--pair` (two cards centered, each capped at 360px)
+  - 3+ people → `team-grid--multi` (auto-fit, cards capped at 360px)
+  Card width stays consistent across groups so the leader doesn't look smaller than the agents below.
 - `photo` is just a filename (e.g. `kenneth.jpg`); the layout prefixes `assets/images/team/`. Missing photo → automatic initials placeholder (gold serif initials on navy gradient) with a "Photo coming" hint.
 - `email` / `phone` are optional — empty values hide the corresponding row. The whole `team-contact-list` `<ul>` is `:empty`-styled to disappear when a person has neither contact field set.
 - Initials computed in the template: first letter of up to 2 space- or hyphen-separated name parts (`Tor-Ove` → `TO`, `Jon Helge` → `JH`).
 
-The layout (`layouts/team/single.html`) and CSS (`.team-grid`, `.team-card`, `.team-photo-placeholder`, etc.) round out the implementation. Norwegian stub at `content/team.nb.md`.
+Norwegian stub at `content/team.nb.md` — the data file is shared across languages, only the labels change per language.
 
 ## Adding a new service
 

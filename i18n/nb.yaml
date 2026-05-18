@@ -89,8 +89,16 @@ footer_memberships_note: Medlemskap og sertifiseringer er illustrative – ersta
 # Teamside
 team_section_tag: Folkene våre
 team_intro: Havneagentvirksomhet handler om relasjoner. Her er teamet bak hvert havneanløp hos Bergen Ship Agency.
+
+# Rolleetikett per person (vises på hvert kort)
 team_role_leader: Daglig leder
 team_role_ship_agent: Skipsagent
 team_role_warehouse: Lager
+
+# Seksjonsoverskrifter (over hver gruppe med kort)
+team_group_leader: Ledelse
+team_group_ship_agent: Skipsagenter
+team_group_warehouse: Lager
+
 team_photo_missing: "Bilde kommer"
 team_edit_hint: "<em>Legg til bilder og kontaktinfo i <code>data/team.yaml</code> &mdash; siden bygges på nytt automatisk.</em>"

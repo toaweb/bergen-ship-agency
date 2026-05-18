@@ -90,10 +90,64 @@ a { text-decoration: none; color: inherit; }
 /* ===========================
    TEAM PAGE
    =========================== */
-.team-grid {
+
+/* Each role gets its own group with a centered heading */
+.team-group {
+  margin-bottom: 4rem;
+}
+.team-group:last-of-type {
+  margin-bottom: 1rem;
+}
+.team-group-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--navy);
+  text-align: center;
+  margin: 0 0 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.team-group-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0.85rem auto 0;
+  border-radius: 2px;
+}
+
+/* Card layouts per group size — kept proportionally similar
+   so the leader doesn't look smaller than the agents below. */
+.team-grid--solo {
+  display: flex;
+  justify-content: center;
+}
+.team-grid--solo .team-card {
+  max-width: 360px;
+  width: 100%;
+}
+
+.team-grid--pair {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 360px));
   gap: 2rem;
+  justify-content: center;
+}
+
+.team-grid--multi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 360px));
+  gap: 2rem;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .team-grid--pair,
+  .team-grid--multi {
+    grid-template-columns: 1fr;
+  }
 }
 
 .team-card {
