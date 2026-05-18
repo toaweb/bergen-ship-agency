@@ -21,6 +21,7 @@
       <ul>
         <li><a href="{{ "/" | relLangURL }}">{{ i18n "nav_home" }}</a></li>
         <li><a href="{{ "/about-us/" | relLangURL }}">{{ i18n "nav_about" }}</a></li>
+        <li><a href="{{ "/team/" | relLangURL }}">{{ i18n "nav_team" }}</a></li>
         {{- with site.GetPage "/services" }}
           {{- range .Pages.ByWeight }}
         <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>

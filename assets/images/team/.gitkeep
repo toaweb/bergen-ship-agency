@@ -1,0 +1,4 @@
+# Team photos go here.
+# Filename must match the `photo:` field in data/team.yaml.
+# E.g. data/team.yaml has `photo: kenneth.jpg` → save it as assets/images/team/kenneth.jpg
+# Square (1:1) JPGs or PNGs around 600×600 or larger work best.

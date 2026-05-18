@@ -5,6 +5,7 @@
 nav_home: Home
 nav_about: About Us
 nav_services: Services
+nav_team: Team
 nav_contact: Contact Us
 
 # Buttons / calls to action
@@ -85,3 +86,12 @@ footer_in_partnership: In partnership with
 footer_memberships: Memberships & Quality
 footer_membership_placeholder: "Membership / certification badge — replace with image"
 footer_memberships_note: Membership and certification details are illustrative — replace with your own.
+
+# Team page
+team_section_tag: People
+team_intro: Port agency is a relationship business. Here's the team behind every Bergen Ship Agency port call.
+team_role_leader: Leader
+team_role_ship_agent: Ship Agent
+team_role_warehouse: Warehouse
+team_photo_missing: "Photo coming"
+team_edit_hint: "<em>Add photos and contact details in <code>data/team.yaml</code> &mdash; this page rebuilds automatically.</em>"

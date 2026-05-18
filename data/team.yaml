@@ -1,0 +1,67 @@
+# =====================================================
+# Team members shown on /team/  (and /nb/team/)
+# Edit this file to add/remove people, photos, contact details.
+# Hugo rebuilds the page automatically on save.
+# =====================================================
+#
+# Each entry has the following fields:
+#
+#   name:   Display name. Required.
+#
+#   role:   Role *key*. Current options:
+#             - leader
+#             - ship_agent
+#             - warehouse
+#           The label is looked up from i18n/{en,nb}.yaml under
+#           `team_role_<role>`. To add a new role type, add the key
+#           to BOTH language files (e.g. team_role_accountant)
+#           before referencing it here.
+#
+#   photo:  Filename inside  assets/images/team/  (e.g. "kenneth.jpg").
+#           Leave EMPTY (or omit the field) to show an initials
+#           placeholder until you have a photo.
+#
+#   email:  Contact email. Leave empty to hide the email row.
+#   phone:  Contact phone with country code (e.g. "+47 12 34 56 78").
+#           Leave empty to hide the phone row.
+#
+#   weight: Sort order — lower numbers appear first.
+#
+# Photos: square (1:1) JPGs or PNGs work best. Anything ~600×600 or
+# larger is fine — Hugo will resize and convert to webp automatically.
+# =====================================================
+
+- name: Kenneth
+  role: leader
+  photo:
+  email:
+  phone:
+  weight: 1
+
+- name: Henrik
+  role: ship_agent
+  photo:
+  email:
+  phone:
+  weight: 2
+
+- name: Marthe
+  role: ship_agent
+  photo:
+  email:
+  phone:
+  weight: 3
+
+- name: Tor-Ove
+  role: warehouse
+  photo:
+  email:
+  phone:
+  weight: 4
+
+- name: Jon Helge
+  role: warehouse
+  photo:
+  email:
+  phone:
+  weight: 5

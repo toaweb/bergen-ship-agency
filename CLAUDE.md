@@ -39,7 +39,7 @@ Layout lookup that matters here:
 ### Content model
 
 - `content/_index.md` — home (title only; body is unused, homepage is layout-driven).
-- `content/about-us.md`, `content/contact.md` — top-level pages.
+- `content/about-us.md`, `content/contact.md`, `content/team.md` — top-level pages. Contact and team both use `type: <name>` in front matter to route to `layouts/<name>/single.html`.
 - `content/services/_index.md` + `content/services/<slug>.md` — service section.
 - Markdown uses **unsafe goldmark** (`hugo.yaml`: `markup.goldmark.renderer.unsafe: true`) — service pages embed raw `<div class="service-features-grid">` HTML inside markdown. This is intentional; don't strip it.
 
@@ -108,6 +108,18 @@ Two languages configured in `hugo.yaml`: `en` (default, served at `/`) and `nb` 
 1. Copy `content/foo.md` → `content/foo.nb.md`.
 2. Translate the `title`, `description`, and body.
 3. Leave `image`, `icon`, `weight` as-is (those are language-independent).
+
+### Team page
+
+Single page at `/team/` (and `/nb/team/`) backed by **`data/team.yaml`** — that file is the single source of truth and the only file the client should need to touch when staff changes. The file is heavily commented; convention is:
+
+- One entry per person with `name`, `role`, optional `photo` / `email` / `phone`, and `weight` (sort order).
+- `role` is a **key** (`leader`, `ship_agent`, `warehouse`), not a label. The localized label comes from `i18n/*.yaml` under `team_role_<key>`. Adding a new role type means adding the i18n key in both languages first.
+- `photo` is just a filename (e.g. `kenneth.jpg`); the layout prefixes `assets/images/team/`. Missing photo → automatic initials placeholder (gold serif initials on navy gradient) with a "Photo coming" hint.
+- `email` / `phone` are optional — empty values hide the corresponding row. The whole `team-contact-list` `<ul>` is `:empty`-styled to disappear when a person has neither contact field set.
+- Initials computed in the template: first letter of up to 2 space- or hyphen-separated name parts (`Tor-Ove` → `TO`, `Jon Helge` → `JH`).
+
+The layout (`layouts/team/single.html`) and CSS (`.team-grid`, `.team-card`, `.team-photo-placeholder`, etc.) round out the implementation. Norwegian stub at `content/team.nb.md`.
 
 ## Adding a new service
 

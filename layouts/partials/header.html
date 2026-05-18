@@ -45,6 +45,7 @@
             {{- end }}
           </ul>
         </li>
+        <li><a href="{{ "/team/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/team/" }}active{{ end }}">{{ i18n "nav_team" }}</a></li>
         <li><a href="{{ "/contact/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/contact/" }}active{{ end }}">{{ i18n "nav_contact" }}</a></li>
       </ul>
     </div>

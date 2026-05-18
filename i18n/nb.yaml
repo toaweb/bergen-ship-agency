@@ -4,6 +4,7 @@
 nav_home: Hjem
 nav_about: Om oss
 nav_services: Tjenester
+nav_team: Team
 nav_contact: Kontakt oss
 
 # Knapper
@@ -84,3 +85,12 @@ footer_in_partnership: I samarbeid med
 footer_memberships: Medlemskap og kvalitet
 footer_membership_placeholder: "Medlemskaps-/sertifiseringsmerke – erstatt med bilde"
 footer_memberships_note: Medlemskap og sertifiseringer er illustrative – erstatt med deres egne.
+
+# Teamside
+team_section_tag: Folkene våre
+team_intro: Havneagentvirksomhet handler om relasjoner. Her er teamet bak hvert havneanløp hos Bergen Ship Agency.
+team_role_leader: Daglig leder
+team_role_ship_agent: Skipsagent
+team_role_warehouse: Lager
+team_photo_missing: "Bilde kommer"
+team_edit_hint: "<em>Legg til bilder og kontaktinfo i <code>data/team.yaml</code> &mdash; siden bygges på nytt automatisk.</em>"
