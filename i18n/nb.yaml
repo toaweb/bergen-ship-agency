@@ -34,7 +34,7 @@ tag_get_in_touch: Ta kontakt
 
 # Kontaktskjema
 form_heading: Send oss en melding
-form_intro: Vi svarer vanligvis innen få timer. For hastesaker, ring oss.
+form_intro: For hastesaker, ring oss. Ellers svarer vi så raskt vi kan.
 form_name: Navn
 form_email: E-post
 form_company: Selskap
@@ -65,7 +65,7 @@ map_title: Bergen Ship Agency – havnedekning langs Norskekysten
 cta_urgent_title: Fartøy på vei inn?
 cta_urgent_body: Døgnkontinuerlig respons for hastesaker, uventede ankomster og operative behov. Vi svarer 24/7.
 cta_planned_title: Planlegger du et fremtidig havneanløp?
-cta_planned_body: Send oss fartøysdetaljer og datoer. Vi utarbeider et tilbud og bekrefter operasjonen innen én virkedag.
+cta_planned_body: Send oss fartøysdetaljer og datoer, så kommer vi tilbake med et tilbud.
 cta_planned_button: Be om tilbud
 
 # Tjenestesidens prosess-tidslinje

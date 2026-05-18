@@ -35,7 +35,7 @@ tag_get_in_touch: Get In Touch
 
 # Contact form
 form_heading: Send us a message
-form_intro: We typically respond within a few hours. For urgent matters, please call.
+form_intro: For urgent matters, please call. Otherwise, we'll get back to you as soon as we can.
 form_name: Name
 form_email: Email
 form_company: Company
@@ -66,7 +66,7 @@ map_title: Bergen Ship Agency port coverage along the Norwegian coast
 cta_urgent_title: Vessel inbound now?
 cta_urgent_body: Round-the-clock response for urgent port calls, unscheduled arrivals, and operational issues. We answer 24/7.
 cta_planned_title: Planning a future port call?
-cta_planned_body: Send us your vessel details and dates. We'll prepare a quote and confirm the operation within one business day.
+cta_planned_body: Send us your vessel details and dates and we'll come back with a quote.
 cta_planned_button: Request a Quote
 
 # Service-page process timeline
