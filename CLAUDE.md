@@ -82,7 +82,7 @@ weight: 1                 # sort order across nav, dropdown, footer, sidebar, ca
 - All site images live under `assets/images/` (services in `assets/images/services/`). Hugo Pipes transcodes them to webp + fingerprints the output (cache-busting via filename hash).
 - Service templates and the home page card use `.Process "webp q85"` (format-only, no resize) so the four service images and one about-us image dedupe to one built artifact each.
 - The `asset-image` shortcode is the only way to surface `assets/images/` content from inside a markdown body — direct `<img src="/images/...">` skips the pipeline and breaks if filenames change.
-- Source dimensions: services 600×537, about-us 960×540, hero-yacht 3488×2616. Templates **don't upscale**; for sharper retina detail on services/about, replace the source with a larger image.
+- Source dimensions: services 600×537, about-us 960×540, hero 1920×1080. Templates **don't upscale**; for sharper retina detail on services/about, replace the source with a larger image.
 - **Hero background** is set via inline `style="background-image: url(...)"` in `layouts/index.html` (line ~3) so the URL goes through Hugo Pipes and gets fingerprinted. The CSS class `.hero-bg` only sets `background-position` / `-size` / `-repeat`. Don't put a `url(...)` back into the CSS — it would break the migration.
 
 ### Multilingual

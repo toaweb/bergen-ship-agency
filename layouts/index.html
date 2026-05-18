@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <!-- Hero Section -->
-{{- $heroImg := resources.Get "images/hero-yacht.jpg" -}}
+{{- $heroImg := resources.Get "images/hero.jpg" -}}
 {{- with $heroImg }}{{ $heroImg = .Resize "1920x webp q82" }}{{ end -}}
 <section class="hero">
   <div class="hero-bg"{{ with $heroImg }} style="background-image: url('{{ .RelPermalink }}')"{{ end }}>
