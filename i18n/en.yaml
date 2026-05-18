@@ -57,3 +57,31 @@ skip_to_content: Skip to content
 
 # Language switcher
 language_switcher_label: Language
+
+# Coverage map
+map_title: Bergen Ship Agency port coverage along the Norwegian coast
+
+# Split CTA
+cta_urgent_title: Vessel inbound now?
+cta_urgent_body: Round-the-clock response for urgent port calls, unscheduled arrivals, and operational issues. We answer 24/7.
+cta_planned_title: Planning a future port call?
+cta_planned_body: Send us your vessel details and dates. We'll prepare a quote and confirm the operation within one business day.
+cta_planned_button: Request a Quote
+
+# Service-page process timeline
+process_section_tag: Our process
+process_section_title: How a port call works with us
+process_step_1_title: Pre-arrival
+process_step_1_body: We confirm the berth, pre-clear customs paperwork, and coordinate pilotage and tugs before your vessel arrives.
+process_step_2_title: Arrival
+process_step_2_body: Mooring crew, immigration, and customs are coordinated on the quay. Your agent is reachable around the clock from the moment you arrive.
+process_step_3_title: Port stay
+process_step_3_body: Supplies, bunkering, crew transfers, waste reception, technical visits — we handle the logistics so the vessel keeps to schedule.
+process_step_4_title: Departure
+process_step_4_body: Final customs, pilot booking, and a post-call statement of facts delivered with the disbursement account.
+
+# Footer additions
+footer_in_partnership: In partnership with
+footer_memberships: Memberships & Quality
+footer_membership_placeholder: "Membership / certification badge — replace with image"
+footer_memberships_note: Membership and certification details are illustrative — replace with your own.

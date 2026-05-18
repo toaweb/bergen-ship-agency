@@ -32,6 +32,8 @@ Layout lookup that matters here:
 - `layouts/contact/single.html` — contact page is routed here because `content/contact.md` sets `type: "contact"` in front matter.
 - `layouts/partials/header.html`, `footer.html` — global nav and footer. Services dropdown (header) and services links (footer) are generated from the services section.
 - `layouts/partials/service-card.html` — single source of truth for service-card markup (home grid and `/services/` listing both use it). Reads `.Params.image`, `.Params.icon`, `.Params.summary`, `.Title`, `.RelPermalink`.
+- `layouts/partials/norway-map.html` — stylized SVG of Norway with port pins. Port list (Tromsø, Bodø, Trondheim, Ålesund, Bergen, Stavanger, Kristiansand) is hardcoded in the partial as a slice of dicts. Bergen is rendered as the HQ pin (gold + pulse animation); others are dark navy dots. The Norway outline is **intentionally stylized** — not GIS-accurate. To edit ports, modify the `$ports` slice at the top of the partial.
+- `layouts/partials/service-process.html` — generic 4-step "How a port call works" timeline rendered on every service detail page. Step copy comes from `i18n/*.yaml` keys `process_step_{1..4}_{title,body}`, so editing one place updates every service page in both languages.
 - `layouts/shortcodes/asset-image.html` — `{{</* asset-image src="..." alt="..." width="..." */>}}` shortcode for embedding `assets/images/` images inside markdown bodies with Hugo image processing. Errors if `src` doesn't resolve.
 
 ### Content model
@@ -80,7 +82,8 @@ weight: 1                 # sort order across nav, dropdown, footer, sidebar, ca
 - All site images live under `assets/images/` (services in `assets/images/services/`). Hugo Pipes transcodes them to webp + fingerprints the output (cache-busting via filename hash).
 - Service templates and the home page card use `.Process "webp q85"` (format-only, no resize) so the four service images and one about-us image dedupe to one built artifact each.
 - The `asset-image` shortcode is the only way to surface `assets/images/` content from inside a markdown body — direct `<img src="/images/...">` skips the pipeline and breaks if filenames change.
-- Source images are currently 600×537 (services) / 960×540 (about-us). Templates do **not** upscale; if you want sharper detail on hi-DPI displays, replace the source with a larger image — templates will pick it up automatically.
+- Source dimensions: services 600×537, about-us 960×540, hero-yacht 3488×2616. Templates **don't upscale**; for sharper retina detail on services/about, replace the source with a larger image.
+- **Hero background** is set via inline `style="background-image: url(...)"` in `layouts/index.html` (line ~3) so the URL goes through Hugo Pipes and gets fingerprinted. The CSS class `.hero-bg` only sets `background-position` / `-size` / `-repeat`. Don't put a `url(...)` back into the CSS — it would break the migration.
 
 ### Multilingual
 
@@ -114,6 +117,14 @@ One file, one image. Nav/cards/dropdown/sidebar/footer all update automatically.
 2. Create `content/services/<slug>.md` with the front-matter contract above (`title`, `image`, `icon`, `description`, `summary`, `weight`).
 
 The home grid CSS is sized for 4 cards — adding a 5th may need a CSS tweak in `assets/css/main.css` `.services-grid`.
+
+## Placeholders the client should replace
+
+- **Hero stats** (`layouts/index.html`): "24/7", "Core Services", "Bergen" — replace with real operational numbers when you have them.
+- **Footer memberships** (`layouts/partials/footer.html`): three `<span class="cert-placeholder">` chips (ISO 9001, Norwegian Shipowners' Assoc., IMO ISM) are dashed-outline placeholders. Replace with real certification/membership logos (use the `asset-image` shortcode pattern).
+- **LinkedIn URL** (`layouts/partials/footer.html`): currently points at `https://www.linkedin.com/` — set to the real company page URL.
+- **Exclusive Scandinavia** callout: hardcoded as plain text in `partials/footer.html`. If they're an actual partner, link to their site.
+- **Norway coverage ports** (`layouts/partials/norway-map.html`): seeded with 7 major ports — adjust the `$ports` slice to match actual coverage. Pin coordinates are tied to the SVG `viewBox="0 0 240 600"` — recalibrate `x`/`y` if you change the outline path.
 
 ## Gotchas
 

@@ -1,0 +1,27 @@
+{{- /*
+  Generic "How a port call works" 4-step timeline shown on each service page.
+  Steps are i18n keys (process_step_N_title / process_step_N_body) so the same
+  partial localizes across languages without duplicating content.
+*/ -}}
+<section class="service-process">
+  <div class="service-process-header">
+    <div class="section-tag">{{ i18n "process_section_tag" }}</div>
+    <h2>{{ i18n "process_section_title" }}</h2>
+  </div>
+
+  <ol class="process-timeline" aria-label="{{ i18n "process_section_title" }}">
+    {{- range $i := slice 1 2 3 4 -}}
+    {{- $titleKey := printf "process_step_%d_title" $i -}}
+    {{- $bodyKey  := printf "process_step_%d_body"  $i -}}
+    <li class="process-step">
+      <div class="process-step-marker">
+        <span class="process-step-num">{{ $i }}</span>
+      </div>
+      <div class="process-step-body">
+        <h4>{{ i18n $titleKey }}</h4>
+        <p>{{ i18n $bodyKey }}</p>
+      </div>
+    </li>
+    {{- end -}}
+  </ol>
+</section>

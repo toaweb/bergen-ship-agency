@@ -25,6 +25,8 @@
           {{ .Content }}
         </div>
         <a href="{{ "/contact/" | relLangURL }}" class="btn btn-primary" style="margin-top:2rem; display:inline-block;">{{ i18n "btn_contact_us" }}</a>
+
+        {{ partial "service-process.html" . }}
       </div>
       <aside class="service-sidebar">
         <div class="sidebar-widget">

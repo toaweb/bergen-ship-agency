@@ -56,3 +56,31 @@ skip_to_content: Hopp til innhold
 
 # Språkvelger
 language_switcher_label: Språk
+
+# Dekningskart
+map_title: Bergen Ship Agency – havnedekning langs Norskekysten
+
+# Delt CTA
+cta_urgent_title: Fartøy på vei inn?
+cta_urgent_body: Døgnkontinuerlig respons for hastesaker, uventede ankomster og operative behov. Vi svarer 24/7.
+cta_planned_title: Planlegger du et fremtidig havneanløp?
+cta_planned_body: Send oss fartøysdetaljer og datoer. Vi utarbeider et tilbud og bekrefter operasjonen innen én virkedag.
+cta_planned_button: Be om tilbud
+
+# Tjenestesidens prosess-tidslinje
+process_section_tag: Vår prosess
+process_section_title: Slik fungerer et havneanløp med oss
+process_step_1_title: Før ankomst
+process_step_1_body: Vi bekrefter kaiplass, forhåndsklarerer tolldokumenter og koordinerer los og slepebåter før fartøyet kommer.
+process_step_2_title: Ankomst
+process_step_2_body: Fortøyningsmannskap, immigrasjon og toll koordineres på kaia. Agenten din er tilgjengelig døgnet rundt fra ankomstøyeblikket.
+process_step_3_title: Havneopphold
+process_step_3_body: Forsyninger, bunkers, mannskapsbytter, avfallshåndtering og tekniske besøk — vi tar hånd om logistikken slik at fartøyet holder rute.
+process_step_4_title: Avgang
+process_step_4_body: Sluttoll, losbestilling og en sluttrapport med faktagrunnlag levert sammen med disbursement-regnskapet.
+
+# Bunntekst-tillegg
+footer_in_partnership: I samarbeid med
+footer_memberships: Medlemskap og kvalitet
+footer_membership_placeholder: "Medlemskaps-/sertifiseringsmerke – erstatt med bilde"
+footer_memberships_note: Medlemskap og sertifiseringer er illustrative – erstatt med deres egne.

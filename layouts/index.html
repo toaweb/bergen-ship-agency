@@ -1,8 +1,10 @@
 {{ define "main" }}
 
 <!-- Hero Section -->
+{{- $heroImg := resources.Get "images/hero-yacht.jpg" -}}
+{{- with $heroImg }}{{ $heroImg = .Resize "1920x webp q82" }}{{ end -}}
 <section class="hero">
-  <div class="hero-bg">
+  <div class="hero-bg"{{ with $heroImg }} style="background-image: url('{{ .RelPermalink }}')"{{ end }}>
     <div class="hero-overlay"></div>
     <div class="hero-waves">
       <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +56,7 @@
       <p class="section-subtitle">Comprehensive port agency services for all vessel types along the Norwegian coast</p>
     </div>
 
-    <div class="services-grid">
+    <div class="services-grid services-grid--home">
       {{ range (site.GetPage "/services").Pages.ByWeight }}
         {{ partial "service-card.html" . }}
       {{ end }}
@@ -62,7 +64,7 @@
   </div>
 </section>
 
-<!-- Why Us Section -->
+<!-- Why Us + Coverage Section -->
 <section class="why-section section">
   <div class="container">
     <div class="why-grid">
@@ -70,52 +72,74 @@
         <div class="section-tag">Why Bergen Ship Agency</div>
         <h2 class="section-title">Trusted by shipping companies worldwide</h2>
         <p>With vast skills and experience in the maritime business sector, Bergen Ship Agency delivers quality on all assignments. We are independent of other shipping companies, enabling us to offer the best service at competitive market prices.</p>
-        <a href="/about-us/" class="btn btn-primary" style="margin-top:2rem">About Us</a>
+        <a href="{{ "/about-us/" | relLangURL }}" class="btn btn-primary" style="margin-top:2rem">{{ i18n "btn_about_us" }}</a>
       </div>
-      <div class="why-features">
-        <div class="feature-item">
-          <div class="feature-icon">✓</div>
-          <div>
-            <strong>Confidential & trusted partner</strong>
-            <p>Discretion and reliability are at the core of everything we do.</p>
-          </div>
+      <div class="why-map">
+        <div class="why-map-header">
+          <div class="section-tag">Coverage</div>
+          <h3>Along the Norwegian coast</h3>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon">✓</div>
-          <div>
-            <strong>Good connections with the authorities</strong>
-            <p>Established relationships ensure smooth and efficient port operations.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">✓</div>
-          <div>
-            <strong>Access to all Western Norway terminals</strong>
-            <p>Full coverage of terminals and refineries on the western coast.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">✓</div>
-          <div>
-            <strong>Online updates 24/7</strong>
-            <p>Real-time status updates whenever you need them.</p>
-          </div>
-        </div>
+        {{ partial "norway-map.html" . }}
       </div>
     </div>
+
+    <ul class="why-features">
+      <li class="feature-item">
+        <div class="feature-icon">✓</div>
+        <div>
+          <strong>Confidential & trusted partner</strong>
+          <p>Discretion and reliability are at the core of everything we do.</p>
+        </div>
+      </li>
+      <li class="feature-item">
+        <div class="feature-icon">✓</div>
+        <div>
+          <strong>Good connections with the authorities</strong>
+          <p>Established relationships ensure smooth and efficient port operations.</p>
+        </div>
+      </li>
+      <li class="feature-item">
+        <div class="feature-icon">✓</div>
+        <div>
+          <strong>Access to all Western Norway terminals</strong>
+          <p>Full coverage of terminals and refineries on the western coast.</p>
+        </div>
+      </li>
+      <li class="feature-item">
+        <div class="feature-icon">✓</div>
+        <div>
+          <strong>Online updates 24/7</strong>
+          <p>Real-time status updates whenever you need them.</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
-<!-- CTA Section -->
+<!-- CTA Section (split: urgent vs. planned) -->
 <section class="cta-section">
-  <div class="container cta-inner">
-    <div>
-      <h2>Ready to work together?</h2>
-      <p>Contact us today for all your port agency needs along the Norwegian coast.</p>
-    </div>
-    <div class="cta-actions">
-      <a href="tel:{{ .Site.Params.phone }}" class="btn btn-outline-white">{{ .Site.Params.phone }}</a>
-      <a href="/contact/" class="btn btn-white">Get in Touch</a>
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-card cta-card--urgent">
+        <div class="cta-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+        </div>
+        <h3>{{ i18n "cta_urgent_title" }}</h3>
+        <p>{{ i18n "cta_urgent_body" }}</p>
+        <a href="tel:{{ .Site.Params.phone }}" class="btn btn-white">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          {{ .Site.Params.phone }}
+        </a>
+      </div>
+
+      <div class="cta-card cta-card--planned">
+        <div class="cta-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
+        </div>
+        <h3>{{ i18n "cta_planned_title" }}</h3>
+        <p>{{ i18n "cta_planned_body" }}</p>
+        <a href="{{ "/contact/" | relLangURL }}" class="btn btn-primary">{{ i18n "cta_planned_button" }}</a>
+      </div>
     </div>
   </div>
 </section>

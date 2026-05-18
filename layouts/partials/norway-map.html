@@ -1,0 +1,64 @@
+{{- /*
+  Stylized SVG of Norway with port pins for Bergen Ship Agency's coverage.
+  Geographically abstract (intentionally — this is design, not a map).
+  Bergen is rendered as the HQ pin (gold, animated pulse).
+  Port list lives in this file; edit here to add/remove ports.
+*/ -}}
+<svg class="norway-map" viewBox="0 0 240 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="norway-map-title">
+  <title id="norway-map-title">{{ i18n "map_title" | default "Bergen Ship Agency port coverage along the Norwegian coast" }}</title>
+
+  <!-- Norway silhouette (stylized, not GIS-accurate) -->
+  <path d="M 145 575
+           Q 100 570 85 555
+           Q 70 525 80 495
+           Q 65 465 75 435
+           Q 70 405 85 380
+           Q 75 350 85 320
+           Q 70 290 80 260
+           Q 75 230 85 200
+           Q 80 175 95 150
+           Q 100 125 130 110
+           Q 160 95 200 100
+           Q 220 110 215 140
+           Q 200 165 195 195
+           Q 185 230 195 265
+           Q 200 300 195 340
+           Q 200 380 205 415
+           Q 215 450 205 485
+           Q 195 510 175 525
+           Q 160 545 145 575 Z"
+        fill="rgba(10,22,40,0.05)"
+        stroke="rgba(10,22,40,0.55)"
+        stroke-width="1.5"
+        stroke-linejoin="round"/>
+
+  <!-- Subtle wave hint inside the shape, just for texture -->
+  <path d="M 90 530 Q 110 525 130 530 M 95 460 Q 115 455 130 458 M 105 380 Q 130 376 155 380 M 110 300 Q 135 295 160 298 M 120 220 Q 145 215 170 218"
+        stroke="rgba(10,22,40,0.12)" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+  <!-- Ports (non-HQ) -->
+  {{- $ports := slice
+      (dict "name" "Tromsø"       "x" 160 "y" 135 "anchor" "start" "lx" 170 "ly" 139)
+      (dict "name" "Bodø"         "x" 125 "y" 195 "anchor" "start" "lx" 135 "ly" 199)
+      (dict "name" "Trondheim"    "x" 135 "y" 290 "anchor" "start" "lx" 145 "ly" 294)
+      (dict "name" "Ålesund"      "x" 100 "y" 365 "anchor" "end"   "lx" 88  "ly" 369)
+      (dict "name" "Stavanger"    "x" 100 "y" 495 "anchor" "end"   "lx" 88  "ly" 499)
+      (dict "name" "Kristiansand" "x" 140 "y" 555 "anchor" "start" "lx" 150 "ly" 559)
+  -}}
+  {{- range $ports }}
+  <g class="port-pin">
+    <circle cx="{{ .x }}" cy="{{ .y }}" r="4" fill="var(--navy)"/>
+    <text x="{{ .lx }}" y="{{ .ly }}" font-size="11" fill="var(--navy)" text-anchor="{{ .anchor }}">{{ .name }}</text>
+  </g>
+  {{- end }}
+
+  <!-- Bergen HQ (animated pulse) -->
+  <g class="port-pin port-pin--hq">
+    <circle cx="95" cy="430" r="11" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.5">
+      <animate attributeName="r" values="7;15;7" dur="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;0;0.55" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="95" cy="430" r="6" fill="var(--gold)"/>
+    <text x="83" y="434" font-size="13" font-weight="700" fill="var(--gold)" text-anchor="end">Bergen</text>
+  </g>
+</svg>
