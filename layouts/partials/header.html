@@ -12,7 +12,12 @@
       {{- if hugo.IsMultilingual }}
       <nav class="lang-switcher" aria-label="{{ i18n "language_switcher_label" }}">
         {{- range .AllTranslations }}
-        <a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}"{{ if eq .Language.Lang $.Page.Language.Lang }} class="active" aria-current="true"{{ end }}>{{ .Language.LanguageName }}</a>
+        <a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}"
+           title="{{ .Language.LanguageName }}"
+           {{- if eq .Language.Lang $.Page.Language.Lang }} class="active" aria-current="true"{{ end }}>
+          {{ partial "flag.html" .Language.Lang }}
+          <span class="sr-only">{{ .Language.LanguageName }}</span>
+        </a>
         {{- end }}
       </nav>
       {{- end }}
@@ -36,11 +41,15 @@
       </button>
 
       <ul class="nav-menu" id="navMenu">
-        <li><a href="{{ "/" | relLangURL }}" class="{{ if .IsHome }}active{{ end }}">{{ i18n "nav_home" }}</a></li>
-        <li><a href="{{ "/about-us/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/about-us/" }}active{{ end }}">{{ i18n "nav_about" }}</a></li>
+        <li><a href="{{ "/" | relLangURL }}" class="{{ if .IsHome }}active{{ end }}">
+          {{ partial "icon.html" "home" }}<span>{{ i18n "nav_home" }}</span>
+        </a></li>
+        <li><a href="{{ "/about-us/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/about-us/" }}active{{ end }}">
+          {{ partial "icon.html" "info" }}<span>{{ i18n "nav_about" }}</span>
+        </a></li>
         <li class="has-dropdown">
           <a href="{{ "/services/" | relLangURL }}" class="{{ if in .RelPermalink "/services/" }}active{{ end }}">
-            {{ i18n "nav_services" }}
+            {{ partial "icon.html" "services" }}<span>{{ i18n "nav_services" }}</span>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
           </a>
           <ul class="dropdown">
@@ -51,8 +60,12 @@
             {{- end }}
           </ul>
         </li>
-        <li><a href="{{ "/team/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/team/" }}active{{ end }}">{{ i18n "nav_team" }}</a></li>
-        <li><a href="{{ "/contact/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/contact/" }}active{{ end }}">{{ i18n "nav_contact" }}</a></li>
+        <li><a href="{{ "/team/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/team/" }}active{{ end }}">
+          {{ partial "icon.html" "team" }}<span>{{ i18n "nav_team" }}</span>
+        </a></li>
+        <li><a href="{{ "/contact/" | relLangURL }}" class="{{ if hasSuffix .RelPermalink "/contact/" }}active{{ end }}">
+          {{ partial "icon.html" "contact" }}<span>{{ i18n "nav_contact" }}</span>
+        </a></li>
       </ul>
     </div>
   </nav>
