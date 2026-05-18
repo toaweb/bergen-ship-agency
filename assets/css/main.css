@@ -592,9 +592,9 @@ a { text-decoration: none; color: inherit; }
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 22, 40, 0.90) 0%,
-    rgba(10, 22, 40, 0.75) 50%,
-    rgba(17, 34, 64, 0.70) 100%
+    rgba(10, 22, 40, 0.65) 0%,
+    rgba(10, 22, 40, 0.40) 50%,
+    rgba(17, 34, 64, 0.30) 100%
   );
 }
 
@@ -635,6 +635,7 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.1;
   margin-bottom: 1.25rem;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 
 .hero-title-accent {
@@ -643,11 +644,12 @@ a { text-decoration: none; color: inherit; }
 
 .hero-subtitle {
   font-size: 1.15rem;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.92);
   max-width: 560px;
   margin-bottom: 2.5rem;
   font-weight: 300;
   line-height: 1.7;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
 }
 
 .hero-actions {
