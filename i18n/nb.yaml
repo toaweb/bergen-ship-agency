@@ -32,6 +32,37 @@ tag_what_we_do: Hva vi gjør
 tag_our_services: Våre tjenester
 tag_get_in_touch: Ta kontakt
 
+# Forside — hero
+hero_badge: Havneagenttjenester · Norge
+hero_title_main: Skipsagent
+hero_title_accent: med base i Bergen
+hero_subtitle: Vi leverer komplette havneagenttjenester langs Norskekysten — yacht, logistikk, tank/supply og lager — tilgjengelig 24/7.
+hero_stat_availability: Tilgjengelighet
+hero_stat_services: Hovedtjenester
+hero_stat_hq: Hovedkontor
+hero_scroll: Bla ned
+
+# Forside — tjenester
+home_services_title: Vi tilbyr bistand til
+home_services_subtitle: Komplette havneagenttjenester for alle fartøystyper langs Norskekysten
+
+# Forside — hvorfor oss
+home_why_tag: Hvorfor Bergen Ship Agency
+home_why_title: Tiltrodd av rederier verden over
+home_why_body: Med omfattende kompetanse og erfaring i maritim sektor leverer Bergen Ship Agency kvalitet på alle oppdrag. Vi er uavhengige av andre rederier, og kan dermed tilby god service til konkurransedyktige priser.
+home_why_feature_1: Konfidensiell og pålitelig partner
+home_why_feature_2: God forbindelse med myndighetene
+home_why_feature_3: Tilgang til alle terminaler og raffinerier i den vestlige delen av Norge
+home_why_feature_4: Oppdateringer på nett 24/7
+
+# Forside — dekning
+home_coverage_tag: Dekning
+home_coverage_title: Vestlandskysten
+home_coverage_caption: Vestlandsterminaler og raffinerier
+
+# Tjenesteliste fallback-undertittel
+services_listing_subtitle: Komplette havneagenttjenester for alle fartøystyper langs Norskekysten
+
 # Kontaktskjema
 form_heading: Send oss en melding
 form_intro: For hastesaker, ring oss. Ellers svarer vi så raskt vi kan.

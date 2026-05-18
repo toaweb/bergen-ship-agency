@@ -33,6 +33,37 @@ tag_what_we_do: What We Do
 tag_our_services: Our Services
 tag_get_in_touch: Get In Touch
 
+# Homepage — hero
+hero_badge: Port Agency Services · Norway
+hero_title_main: Ship Agency
+hero_title_accent: based in Bergen
+hero_subtitle: We provide full port agency services along the Norwegian coast — yacht, logistics, supply, and storage — available 24/7.
+hero_stat_availability: Availability
+hero_stat_services: Core Services
+hero_stat_hq: HQ Location
+hero_scroll: Scroll
+
+# Homepage — services section
+home_services_title: We provide assistance to
+home_services_subtitle: Comprehensive port agency services for all vessel types along the Norwegian coast
+
+# Homepage — why section
+home_why_tag: Why Bergen Ship Agency
+home_why_title: Trusted by shipping companies worldwide
+home_why_body: With vast skills and experience in the maritime business sector, Bergen Ship Agency delivers quality on all assignments. We are independent of other shipping companies, enabling us to offer the best service at competitive market prices.
+home_why_feature_1: Confidential & trusted partner
+home_why_feature_2: Good connections with the authorities
+home_why_feature_3: Access to all terminals and refineries on the western part of Norway
+home_why_feature_4: Online updates 24/7
+
+# Homepage — coverage map
+home_coverage_tag: Coverage
+home_coverage_title: Western Norway coast
+home_coverage_caption: Western Norway terminals & refineries
+
+# Services listing fallback subtitle (when section has no .Description)
+services_listing_subtitle: Comprehensive port agency services for all vessel types along the Norwegian coast
+
 # Contact form
 form_heading: Send us a message
 form_intro: For urgent matters, please call. Otherwise, we'll get back to you as soon as we can.

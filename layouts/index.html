@@ -14,35 +14,35 @@
     </div>
   </div>
   <div class="container hero-content">
-    <div class="hero-badge">Port Agency Services · Norway</div>
+    <div class="hero-badge">{{ i18n "hero_badge" }}</div>
     <h1 class="hero-title">
-      Ship Agency<br>
-      <span class="hero-title-accent">based in Bergen</span>
+      {{ i18n "hero_title_main" }}<br>
+      <span class="hero-title-accent">{{ i18n "hero_title_accent" }}</span>
     </h1>
-    <p class="hero-subtitle">We provide full port agency services along the Norwegian coast — yacht, logistics, supply, and storage — available 24/7.</p>
+    <p class="hero-subtitle">{{ i18n "hero_subtitle" }}</p>
     <div class="hero-actions">
-      <a href="/contact/" class="btn btn-primary">Get in Touch</a>
-      <a href="/about-us/" class="btn btn-outline">Learn More</a>
+      <a href="{{ "/contact/" | relLangURL }}" class="btn btn-primary">{{ i18n "btn_get_in_touch" }}</a>
+      <a href="{{ "/about-us/" | relLangURL }}" class="btn btn-outline">{{ i18n "btn_learn_more" }}</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
         <span class="stat-num">24/7</span>
-        <span class="stat-label">Availability</span>
+        <span class="stat-label">{{ i18n "hero_stat_availability" }}</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
         <span class="stat-num">{{ len (site.GetPage "/services").Pages }}</span>
-        <span class="stat-label">Core Services</span>
+        <span class="stat-label">{{ i18n "hero_stat_services" }}</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
         <span class="stat-num">Bergen</span>
-        <span class="stat-label">HQ Location</span>
+        <span class="stat-label">{{ i18n "hero_stat_hq" }}</span>
       </div>
     </div>
   </div>
   <div class="hero-scroll-hint">
-    <span>Scroll</span>
+    <span>{{ i18n "hero_scroll" }}</span>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
   </div>
 </section>
@@ -51,9 +51,9 @@
 <section class="services-section section">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-title">We provide assistance to</h2>
-      <p class="section-subtitle">Comprehensive port agency services for all vessel types along the Norwegian coast</p>
+      <div class="section-tag">{{ i18n "tag_what_we_do" }}</div>
+      <h2 class="section-title">{{ i18n "home_services_title" }}</h2>
+      <p class="section-subtitle">{{ i18n "home_services_subtitle" }}</p>
     </div>
 
     <div class="services-grid services-grid--home">
@@ -69,39 +69,39 @@
   <div class="container">
     <div class="why-grid">
       <div class="why-content">
-        <div class="section-tag">Why Bergen Ship Agency</div>
-        <h2 class="section-title">Trusted by shipping companies worldwide</h2>
-        <p>With vast skills and experience in the maritime business sector, Bergen Ship Agency delivers quality on all assignments. We are independent of other shipping companies, enabling us to offer the best service at competitive market prices.</p>
+        <div class="section-tag">{{ i18n "home_why_tag" }}</div>
+        <h2 class="section-title">{{ i18n "home_why_title" }}</h2>
+        <p>{{ i18n "home_why_body" }}</p>
         <a href="{{ "/about-us/" | relLangURL }}" class="btn btn-primary" style="margin-top:2rem">{{ i18n "btn_about_us" }}</a>
       </div>
       <div class="why-map">
         <div class="why-map-header">
-          <div class="section-tag">Coverage</div>
-          <h3>Western Norway coast</h3>
+          <div class="section-tag">{{ i18n "home_coverage_tag" }}</div>
+          <h3>{{ i18n "home_coverage_title" }}</h3>
         </div>
         {{ partial "norway-map.html" . }}
       </div>
     </div>
 
-    {{- /* Bullet titles below are verbatim from the original site's About page.
-           Sub-descriptions are intentionally omitted to avoid claiming things
-           the company hasn't asserted. */ -}}
+    {{- /* Bullet titles are verbatim from the original site's About page,
+           localized via i18n keys. No sub-descriptions — original site
+           doesn't elaborate, and we don't want to invent claims. */ -}}
     <ul class="why-features">
       <li class="feature-item">
         <div class="feature-icon">✓</div>
-        <div><strong>Confidential & trusted partner</strong></div>
+        <div><strong>{{ i18n "home_why_feature_1" }}</strong></div>
       </li>
       <li class="feature-item">
         <div class="feature-icon">✓</div>
-        <div><strong>Good connections with the authorities</strong></div>
+        <div><strong>{{ i18n "home_why_feature_2" }}</strong></div>
       </li>
       <li class="feature-item">
         <div class="feature-icon">✓</div>
-        <div><strong>Access to all terminals and refineries on the western part of Norway</strong></div>
+        <div><strong>{{ i18n "home_why_feature_3" }}</strong></div>
       </li>
       <li class="feature-item">
         <div class="feature-icon">✓</div>
-        <div><strong>Online updates 24/7</strong></div>
+        <div><strong>{{ i18n "home_why_feature_4" }}</strong></div>
       </li>
     </ul>
   </div>
