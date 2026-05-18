@@ -1,0 +1,25 @@
+{{- /*
+  Renders a single service card. Expects context to be a service Page.
+  Reads .Params.image (filename under assets/images/services/),
+  .Params.icon (SVG path data), .Params.summary, .Title, .RelPermalink.
+*/ -}}
+{{- $img := resources.Get (printf "images/services/%s" .Params.image) -}}
+{{- with $img -}}{{- $img = .Process "webp q85" -}}{{- end -}}
+<a href="{{ .RelPermalink }}" class="service-card">
+  <div class="service-card-img">
+    {{- with $img }}
+    <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Title }}" loading="lazy">
+    {{- end }}
+    <div class="service-card-overlay"></div>
+  </div>
+  <div class="service-card-body">
+    {{- with .Params.icon }}
+    <div class="service-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="{{ . }}"/></svg>
+    </div>
+    {{- end }}
+    <h3>{{ .Title }}</h3>
+    <p>{{ .Params.summary | default .Description }}</p>
+    <span class="card-link">Learn more →</span>
+  </div>
+</a>

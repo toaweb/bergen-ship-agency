@@ -1,0 +1,31 @@
+baseURL: "https://bergenshipagency.no/"
+languageCode: "en-us"
+title: "Bergen Ship Agency"
+enableRobotsTXT: true
+
+# Disable taxonomies — not used on this marketing site, keeps /categories/ and /tags/ out of sitemap
+disableKinds:
+  - taxonomy
+  - term
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  phone: "+47 908 93 779"
+  email: "post@bergenshipagency.no"
+  address: "Skoltegrunnskaien 1, 5003 Bergen"
+  description: "Bergen Ship Agency provides all your port agency needs along the Norwegian coast."
+  og_image: "about-us.jpg"
+
+  business:
+    legalName: "Bergen Ship Agency AS"
+    streetAddress: "Skoltegrunnskaien 1"
+    postalCode: "5003"
+    locality: "Bergen"
+    country: "NO"
+    areaServed: "Norway"
+    latitude: 60.40142
+    longitude: 5.31135

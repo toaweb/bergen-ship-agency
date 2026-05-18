@@ -1,0 +1,52 @@
+{{- /*
+  JSON-LD structured data.
+    - Home and Contact: full LocalBusiness with address, geo, opening hours.
+    - Service pages: Service entity referring back to the LocalBusiness as provider.
+*/ -}}
+{{- $b := .Site.Params.business -}}
+{{- $logo := "" -}}
+{{- with resources.Get (printf "images/%s" .Site.Params.og_image) -}}
+  {{- $logo = .Permalink -}}
+{{- end -}}
+
+{{- $localBusiness := dict
+  "@context" "https://schema.org"
+  "@type" "LocalBusiness"
+  "name" $b.legalName
+  "url" .Site.BaseURL
+  "telephone" .Site.Params.phone
+  "email" .Site.Params.email
+  "image" $logo
+  "areaServed" $b.areaServed
+  "description" .Site.Params.description
+  "address" (dict
+    "@type" "PostalAddress"
+    "streetAddress" $b.streetAddress
+    "postalCode" $b.postalCode
+    "addressLocality" $b.locality
+    "addressCountry" $b.country)
+  "geo" (dict
+    "@type" "GeoCoordinates"
+    "latitude" $b.latitude
+    "longitude" $b.longitude)
+  "openingHoursSpecification" (dict
+    "@type" "OpeningHoursSpecification"
+    "dayOfWeek" (slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday")
+    "opens" "00:00"
+    "closes" "23:59")
+-}}
+
+{{- if or .IsHome (eq .Type "contact") -}}
+<script type="application/ld+json">{{ $localBusiness | jsonify (dict "indent" "  ") | safeJS }}</script>
+{{- else if eq .Section "services" -}}
+{{- $service := dict
+  "@context" "https://schema.org"
+  "@type" "Service"
+  "name" .Title
+  "description" (or .Description .Summary)
+  "url" .Permalink
+  "areaServed" $b.areaServed
+  "provider" $localBusiness
+-}}
+<script type="application/ld+json">{{ $service | jsonify (dict "indent" "  ") | safeJS }}</script>
+{{- end -}}

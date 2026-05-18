@@ -1,0 +1,17 @@
+{{- /*
+  Renders an image from assets/images/ with Hugo Pipes processing
+  (resize, webp, fingerprint via .RelPermalink).
+  Usage: {{< asset-image src="about-us.jpg" alt="..." class="..." width="1200" >}}
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $class := .Get "class" -}}
+{{- $width := .Get "width" -}}
+{{- $img := resources.Get (printf "images/%s" $src) -}}
+{{- if not $img -}}{{- errorf "asset-image: %q not found under assets/images/" $src -}}{{- end -}}
+{{- if and $width (lt (int $width) $img.Width) -}}
+  {{- $img = $img.Resize (printf "%sx webp q85" $width) -}}
+{{- else -}}
+  {{- $img = $img.Process "webp q85" -}}
+{{- end -}}
+<img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt }}"{{ with $class }} class="{{ . }}"{{ end }} loading="lazy">

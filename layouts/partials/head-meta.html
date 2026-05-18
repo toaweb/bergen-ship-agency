@@ -1,0 +1,37 @@
+{{- /*
+  Per-page <head> meta: title, description, canonical, Open Graph, Twitter card.
+  Resolves an absolute OG image URL by processing assets/images/<og_image>.
+*/ -}}
+{{- $title := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) -}}
+{{- $description := or .Description .Summary .Site.Params.description -}}
+{{- $ogType := cond .IsHome "website" "article" -}}
+{{- $ogImage := "" -}}
+{{- with .Site.Params.og_image -}}
+  {{- with resources.Get (printf "images/%s" .) -}}
+    {{- $processed := .Fill "1200x630 webp q85" -}}
+    {{- $ogImage = $processed.Permalink -}}
+  {{- end -}}
+{{- end -}}
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="en_US">
+{{- with $ogImage }}
+<meta property="og:image" content="{{ . }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{{- end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{- with $ogImage }}
+<meta name="twitter:image" content="{{ . }}">
+{{- end }}

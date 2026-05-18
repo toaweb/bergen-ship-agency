@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="section-tag">{{ .Section | humanize | default "Page" }}</div>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </div>
+</section>
+
+<section class="page-content section">
+  <div class="container content-narrow">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}

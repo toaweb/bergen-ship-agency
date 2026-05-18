@@ -1,0 +1,48 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="section-tag">Our Services</div>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="service-page-grid">
+      <div class="service-page-content">
+        {{- with .Params.image }}
+          {{- $img := resources.Get (printf "images/services/%s" .) }}
+          {{- with $img }}
+            {{- $img = .Process "webp q85" }}
+        <div class="service-page-img">
+          <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $.Title }}" loading="lazy">
+        </div>
+          {{- end }}
+        {{- end }}
+        <div class="prose">
+          {{ .Content }}
+        </div>
+        <a href="/contact/" class="btn btn-primary" style="margin-top:2rem; display:inline-block;">Contact Us</a>
+      </div>
+      <aside class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Our Services</h4>
+          <ul>
+            {{- range (site.GetPage "/services").Pages.ByWeight }}
+            <li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $.RelPermalink }} class="active"{{ end }}>{{ .Title }}</a></li>
+            {{- end }}
+          </ul>
+        </div>
+        <div class="sidebar-widget contact-widget">
+          <h4>Need Assistance?</h4>
+          <p>Our team is available 24/7 for all your port agency needs.</p>
+          <a href="tel:{{ .Site.Params.phone }}" class="btn btn-primary" style="width:100%;text-align:center;display:block">{{ .Site.Params.phone }}</a>
+          <a href="mailto:{{ .Site.Params.email }}" style="display:block;text-align:center;margin-top:0.75rem;color:var(--navy);font-size:0.9rem;">{{ .Site.Params.email }}</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+{{ end }}

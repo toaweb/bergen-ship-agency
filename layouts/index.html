@@ -1,0 +1,123 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-waves">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/>
+        <path d="M0,80 C360,40 720,100 1080,60 C1260,40 1380,80 1440,80 L1440,120 L0,120 Z" fill="rgba(255,255,255,0.03)"/>
+      </svg>
+    </div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-badge">Port Agency Services · Norway</div>
+    <h1 class="hero-title">
+      Ship Agency<br>
+      <span class="hero-title-accent">based in Bergen</span>
+    </h1>
+    <p class="hero-subtitle">We provide full port agency services along the Norwegian coast — yacht, logistics, supply, and storage — available 24/7.</p>
+    <div class="hero-actions">
+      <a href="/contact/" class="btn btn-primary">Get in Touch</a>
+      <a href="/about-us/" class="btn btn-outline">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">24/7</span>
+        <span class="stat-label">Availability</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">{{ len (site.GetPage "/services").Pages }}</span>
+        <span class="stat-label">Core Services</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">Bergen</span>
+        <span class="stat-label">HQ Location</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">We provide assistance to</h2>
+      <p class="section-subtitle">Comprehensive port agency services for all vessel types along the Norwegian coast</p>
+    </div>
+
+    <div class="services-grid">
+      {{ range (site.GetPage "/services").Pages.ByWeight }}
+        {{ partial "service-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Why Us Section -->
+<section class="why-section section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content">
+        <div class="section-tag">Why Bergen Ship Agency</div>
+        <h2 class="section-title">Trusted by shipping companies worldwide</h2>
+        <p>With vast skills and experience in the maritime business sector, Bergen Ship Agency delivers quality on all assignments. We are independent of other shipping companies, enabling us to offer the best service at competitive market prices.</p>
+        <a href="/about-us/" class="btn btn-primary" style="margin-top:2rem">About Us</a>
+      </div>
+      <div class="why-features">
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Confidential & trusted partner</strong>
+            <p>Discretion and reliability are at the core of everything we do.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Good connections with the authorities</strong>
+            <p>Established relationships ensure smooth and efficient port operations.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Access to all Western Norway terminals</strong>
+            <p>Full coverage of terminals and refineries on the western coast.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Online updates 24/7</strong>
+            <p>Real-time status updates whenever you need them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container cta-inner">
+    <div>
+      <h2>Ready to work together?</h2>
+      <p>Contact us today for all your port agency needs along the Norwegian coast.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="tel:{{ .Site.Params.phone }}" class="btn btn-outline-white">{{ .Site.Params.phone }}</a>
+      <a href="/contact/" class="btn btn-white">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

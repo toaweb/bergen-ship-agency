@@ -1,0 +1,16 @@
+# Hugo build output
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Claude Code local state (CLAUDE.md is intentionally committed as project docs)
+.claude/
+.remember/
