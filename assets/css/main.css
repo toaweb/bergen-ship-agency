@@ -477,6 +477,13 @@ a { text-decoration: none; color: inherit; }
 
 .nav-logo {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.nav-logo img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .logo-text {
@@ -1404,6 +1411,15 @@ a { text-decoration: none; color: inherit; }
   font-size: 1.2rem;
   display: block;
   margin-bottom: 1rem;
+}
+.footer-logo-img {
+  height: 58px;
+  width: auto;
+  display: block;
+  margin-bottom: 1rem;
+  /* Logo is dark navy on transparent — invert to white for the dark footer */
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
 }
 
 .footer-brand p {

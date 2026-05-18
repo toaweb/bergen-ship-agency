@@ -21,8 +21,14 @@
 
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a href="{{ "/" | relLangURL }}" class="nav-logo">
+      <a href="{{ "/" | relLangURL }}" class="nav-logo" aria-label="Bergen Ship Agency — home">
+        {{- $logo := resources.Get "images/logo.png" -}}
+        {{- with $logo }}{{ $logo = .Resize "400x webp q90" }}{{ end -}}
+        {{- with $logo }}
+        <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="Bergen Ship Agency">
+        {{- else }}
         <span class="logo-text">Bergen Ship Agency</span>
+        {{- end }}
       </a>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">

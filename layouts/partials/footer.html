@@ -1,7 +1,13 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
+      {{- $logo := resources.Get "images/logo.png" -}}
+      {{- with $logo }}{{ $logo = .Resize "400x webp q90" }}{{ end -}}
+      {{- with $logo }}
+      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="Bergen Ship Agency" class="footer-logo-img">
+      {{- else }}
       <span class="logo-text footer-logo">Bergen Ship Agency</span>
+      {{- end }}
       <p>{{ i18n "footer_brand_tagline" }}</p>
 
       <div class="footer-partner">
