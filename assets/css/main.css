@@ -585,6 +585,15 @@ a { text-decoration: none; color: inherit; }
   padding: 0.65rem 1.25rem;
   font-size: 0.9rem;
 }
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--gold);
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
+.dropdown li a:hover .dropdown-icon { opacity: 1; }
 
 .nav-toggle {
   display: none;
