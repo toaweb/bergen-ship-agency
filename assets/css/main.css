@@ -3,27 +3,38 @@
    =========================== */
 
 :root {
-  --navy: #0a1628;
-  --navy-mid: #112240;
-  --navy-light: #1a3a5c;
-  --gold: #c4922a;
-  --gold-light: #e0b85a;
-  --white: #ffffff;
-  --off-white: #f8f7f4;
-  --gray-100: #f2f0ed;
-  --gray-200: #e8e4de;
-  --gray-400: #9b9590;
-  --gray-700: #4a4540;
-  --text: #1e1a16;
-  --text-light: #6b6460;
+  /* Brand — derived from the two given hex values (#07587E + #6C9AB4) */
+  --brand-deep:  #07587E;  /* primary deep blue — topbar, footer, hero, CTA */
+  --brand-mid:   #0E6E96;  /* interpolated — hover states, mid-tone surfaces */
+  --brand-light: #6C9AB4;  /* secondary blue-gray — accent surfaces, dividers */
+  --brand-pale:  #D9E5EC;  /* very light tint — card backgrounds, badges */
+
+  /* Accent (kept gold — classic sea + brass maritime combination) */
+  --gold:        #c4922a;
+  --gold-light:  #e0b85a;
+
+  /* Neutrals — cool-leaning to match the blue palette */
+  --white:       #ffffff;
+  --off-white:   #F5F8FA;
+  --gray-100:    #EEF2F5;
+  --gray-200:    #E0E6EB;
+  --gray-400:    #93A2AD;
+  --gray-700:    #4A5A66;
+  --text:        #0A2D3F;  /* ink — darker variant of brand-deep, ~14:1 on white */
+  --text-light:  #5A7585;  /* muted blue-gray secondary text */
+
+  /* Legacy aliases — existing rules use --navy/--navy-mid/--navy-light */
+  --navy:        var(--brand-deep);
+  --navy-mid:    var(--brand-mid);
+  --navy-light:  var(--brand-light);
 
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Source Sans 3', system-ui, sans-serif;
 
   --radius: 6px;
   --radius-lg: 12px;
-  --shadow: 0 4px 24px rgba(10,22,40,0.10);
-  --shadow-lg: 0 12px 48px rgba(10,22,40,0.18);
+  --shadow:    0 4px 24px rgba(7, 88, 126, 0.10);
+  --shadow-lg: 0 12px 48px rgba(7, 88, 126, 0.18);
   --transition: 0.25s ease;
 }
 
@@ -287,7 +298,7 @@ a { text-decoration: none; color: inherit; }
 }
 .team-empty-hint code {
   font-family: monospace;
-  background: rgba(10, 22, 40, 0.06);
+  background: rgba(7, 88, 126, 0.06);
   padding: 1px 6px;
   border-radius: 3px;
   font-size: 0.92em;
@@ -639,9 +650,9 @@ a { text-decoration: none; color: inherit; }
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 22, 40, 0.65) 0%,
-    rgba(10, 22, 40, 0.40) 50%,
-    rgba(17, 34, 64, 0.30) 100%
+    rgba(7, 88, 126, 0.65) 0%,
+    rgba(7, 88, 126, 0.40) 50%,
+    rgba(14, 110, 150, 0.30) 100%
   );
 }
 
@@ -851,7 +862,7 @@ a { text-decoration: none; color: inherit; }
 .service-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10,22,40,0.5), transparent);
+  background: linear-gradient(to top, rgba(7, 88, 126,0.5), transparent);
 }
 
 .service-card-body {
@@ -928,7 +939,7 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   max-width: 260px;
   height: auto;
-  filter: drop-shadow(0 4px 16px rgba(10,22,40,0.08));
+  filter: drop-shadow(0 4px 16px rgba(7, 88, 126,0.08));
 }
 .norway-map .port-pin text {
   font-family: var(--font-sans);
@@ -1435,7 +1446,7 @@ a { text-decoration: none; color: inherit; }
    FOOTER
    =========================== */
 .site-footer {
-  background: var(--navy-mid);
+  background: var(--brand-deep);
   color: rgba(255,255,255,0.7);
 }
 
@@ -1565,11 +1576,12 @@ a { text-decoration: none; color: inherit; }
 .contact-list li a:hover { color: var(--gold-light); }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(108, 154, 180, 0.25);  /* brand-light with low alpha */
+  background: rgba(7, 88, 126, 0.4);  /* subtle band atop brand-deep */
   padding: 1.25rem 1.5rem;
 }
 .footer-bottom p {
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.5);
   font-size: 0.82rem;
 }
 
